@@ -1,0 +1,14 @@
+[Unit]
+Description=Darkhttpd Webserver
+After=network.target
+
+[Service]
+Type=simple
+NoNewPrivileges=yes
+ExecStart=/path/to/darkhttpd/script /path/to/http/file --chroot --no-listing --mimetypes /etc/conf.d/mimetypes
+ProtectHome=on
+PrivateDevices=on
+NoNewPrivileges=on
+
+[Install]
+WantedBy=multi-user.target
