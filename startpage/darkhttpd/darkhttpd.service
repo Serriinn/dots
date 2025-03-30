@@ -6,7 +6,6 @@ After=network.target
 Type=simple
 NoNewPrivileges=yes
 ExecStart=/path/to/darkhttpd/script /path/to/http/file --chroot --no-listing --mimetypes /etc/conf.d/mimetypes
-ProtectHome=on
 PrivateDevices=on
 NoNewPrivileges=on
 
