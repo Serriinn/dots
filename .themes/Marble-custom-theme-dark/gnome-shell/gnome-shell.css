@@ -2218,3 +2218,21 @@ https://gitlab.gnome.org/GNOME/gnome-shell/-/commit/beb77f58243265a6cc62b720a5b0
 .notification-buttons-bin {
   spacing: 1px;
 }
+
+/* Set default panel size */
+
+#panel {
+  height: 2.2em;
+  font-size: 15px;
+}
+
+.panel-button,
+.panel-button .clock {
+  border-radius: 12px;
+  border: 3px solid transparent !important;
+}
+
+.panel-button { -natural-hpadding: 10px !important; } 
+.panel-status-indicators-box:first-child { padding-left: 0; }
+.panel-status-indicators-box:last-child { padding-right: 0; }
+.panel-status-indicators-box:first-child:last-child { padding: 0; }
