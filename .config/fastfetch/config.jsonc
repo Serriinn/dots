@@ -3,12 +3,12 @@
 {  
   "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
   "logo":{
-    "source": "~/.config/fastfetch/ascii/debian.txt",
-    "color": {"1": "91"},
-    "padding": { 
-	    "right": 5,
-	    "left": 3
-    }
+//    "source": "~/.config/fastfetch/ascii/debian.txt",
+//    "color": {"1": "94"},
+//    "padding": { 
+//	    "right": 5,
+//	    "left": 3
+//   }
   }, 
       "display": {
         "separator": "   ",
@@ -32,45 +32,45 @@
     {
 	"type": "os",
 	"key": "󰟾 distro",
-	"keyColor": "92",
+	"keyColor": "94",
 	"format": "{2}"
     },
     {
 	"type": "kernel",
 	"key": " kernel",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "wm",
 	"key": " wm",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "shell",
 	"key": " shell",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "cpu",
 	"key": " cpu",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "gpu",
 	"format": "{1} {2} @ GHz",
 	"key": "󰢮 gpu",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "disk",
 	"key": "󰉉 disk",
-	"keyColor": "92",
+	"keyColor": "94",
 	"folders": "/"
     },
     {
 	"type": "memory",
 	"key": " memory",
-	"keyColor": "92"
+	"keyColor": "94"
     },
     {
 	"type": "custom",
