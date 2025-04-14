@@ -1,76 +1,117 @@
+//  __  __           _       _
+// |  \/  |         | |     | |
+// | \  / | ___   __| |_   _| | ___
+// | |\/| |/ _ \ / _` | | | | |/ _ \
+// | |  | | (_) | (_| | |_| | |  __/
+// |_|  |_|\___/ \__,_|\__,_|_|\___|
+//   _____             __ _
+//  / ____|           / _(_)
+// | |     ___  _ __ | |_ _  __ _
+// | |    / _ \| '_ \|  _| |/ _` |
+// | |___| (_) | | | | | | | (_| |
+//  \_____\___/|_| |_|_| |_|\__, |
+//                           __/ |
+//                          |___/
+// By: Serin
+
 {
-"hyprland/workspaces": {
-   "format": "{icon}",
-   "on-click": "activate",
-   "format-icons": {
-     "1": "1",
-     "2": "2",
-     "3": "3",
-     "4": "4",
-     "5": "5",
-     "urgent": "",
-     "active": "",
-     "default": ""
-   },
-   "sort-by-number": true,
-   "persistent-workspaces": {
-     "1": [],
-     "2": [],
-     "3": [],
-     "4": []
-  }
-},
+  // Workspace Moduel
 
-"tray": {
-   "spacing": 10
-},
-
-"clock": {
-   "tooltip-format": "{:%A, %B %d, %Y}",
-   "format": "{:%I:%M}",
-   "tooltip-format": "<tt><small>{calendar}</small></tt>",
-   "calendar": {
-     "mode"          : "month",
-     "mode-mon-col"  : 3,
-     "weeks-pos"     : "right",
-     "on-scroll"     : 1,
-     "format": {
-       "months": "<span color='#89b4fa'><b>{}</b></span>",
-       "today": "<span color='#a6e3a1'><b>{}</b></span>",
-       "weeks": "<span color='#b4befe'><b>{}</b></span>"
-     },
-   },
-},
-
-"network": {
-  "format-ethernet": "󰤨",
-  "format-wifi": "󰤨",
-  "format-disconnected": "󰤭",
-  "tooltip-format": "Connected to {essid}",
-  "tooltip-format-wifi": "Connected to {essid}",
-  "on-click": "hyprctl dispatch exec '[float]' 'foot -e nmtui'"
-},
-
-"pulseaudio": {
-   "scroll-step": 5, // %, can be a float
-   "format": "{icon}",
-   "format-muted": "",
-   "format-icons": {
-     "default": ["", "", ""]
-   },
-},
-
-"custom/power": {
-   "format" : "⏻ ",
-   "tooltip": false,
-   "menu": "on-click",
-   "menu-file": "$HOME/.config/waybar/power_menu.xml", // Menu file in resources folder
-   "menu-actions": {
-      "shutdown": "shutdown",
-      "reboot": "reboot",
-      "suspend": "systemctl suspend",
-      "hibernate": "systemctl hibernate"
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "urgent": "",
+      "active": "",
+      "default": "",
+    },
+    "sort-by-number": true,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+    },
   },
-},
-}
 
+  // Arrow Icon Moduel
+
+  "custom/arrow-dec": {
+    "format": " 󪥜 ",
+    "tooltip": false,
+  },
+
+  // Application Title Moduels
+
+  "group/app-title": {
+    "orientation": "horizontal",
+    "modules": ["custom/app-title-icon", "custom/app-name"],
+  },
+
+  "custom/app-title-icon": {
+    "format": "{alt}",
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/app-name.sh",
+    "tooltip": false,
+    "return-type": "json",
+  },
+
+  "custom/app-name": {
+    "format": "<b>{}</b>",
+    "interval": 1,
+    "exec": "~/.config/waybar/scripts/app-name.sh",
+    "tooltip": false,
+    "return-type": "json",
+  },
+
+  // Clock
+
+  "clock": {
+    "format": "󪥶 <b>{:%I:%M %p}</b>",
+    "format-alt": "󪥶 <b>{:%a.%d,%b}</b>",
+    "tooltip": false,
+  },
+
+  //Network Moduel
+
+  "network": {
+    "format-wifi": "󪤀 <b>{essid}</b>",
+    "format-ethernet": "󪥈 <b>Ethernet</b>",
+    "tooltip": true,
+    "format-disconnected": "󪤓",
+  },
+
+  // Audio Moduel
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-bluetooth": "{icon}",
+    "format-bluetooth-muted": "{icon}",
+    "tooltip": true,
+    "format-muted": "󪤑",
+    "format-icons": {
+      "headphone": "󪥆",
+      "headset": "󪥆",
+      "default": ["󪤦", "󪤦", "󪤒"],
+    },
+    "on-click": "pavucontrol",
+  },
+
+  // Tray Moduel
+
+  "tray": {
+    "spacing": 8,
+  },
+
+  // Power Moduel
+
+  "custom/power": {
+    "format": "",
+    "on-click": "wlogout",
+  },
+}
