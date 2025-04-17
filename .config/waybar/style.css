@@ -45,9 +45,18 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
+/* Tool Tip settings */
+
 tooltip {
-    background: #313333;
-    color: @color7;
+    background-color: #313333;
+    color: @foreground;
+    text-shadow: none;
+    border-radius: 10px;
+}
+
+tooltip * {
+    color: @foreground;
+    text-shadow: none;
 }
 
 /* Module Container Settings */
@@ -84,7 +93,7 @@ tooltip {
 
 /* Module Settings */ {
     transition: all 0.3s ease;
-    color: @color9;
+    color: @color8;
 }
 
 /* Workspace Module */
@@ -126,12 +135,12 @@ tooltip {
 /* App Title Settings */
 
 #custom-arrow-icon {
-    color: @color1;
+    color: @color13;
     padding: 0px 5px;
 }
 
 #custom-app-title-icon {
-    color: @color7;
+    color: @foreground;
 }
 
 #custom-app-title-icon.Spotify {
@@ -152,14 +161,14 @@ tooltip {
 
 #custom-app-name {
     padding-right: 5px;
-    color: @color7;
+    color: @foreground;
 }
 
 /* Clock Module */
 
 #clock {
     padding: 0px 5px;
-    color: @color7;
+    color: @foreground;
 }
 
 /* Expanding Tray  */
@@ -171,12 +180,12 @@ tooltip {
 
 #custom-expand {
     padding: 0px 5px;
-    color: @color7;
+    color: @foreground;
     transition: all 0.3s ease;
 }
 
 #custom-expand:hover {
-    color: rgba(255, 255, 255, 0.2);
+    color: @color8;
 }
 
 #tray {
@@ -187,18 +196,18 @@ tooltip {
 #bluetooth {
     padding: 0px 5px;
     transition: all 0.3s ease;
-    color: @color7;
+    color: @foreground;
 }
 
 #custom-endpoint {
     padding: 0px 5px;
-    color: @color7;
+    color: @foreground;
 }
 
 /* Audio Module */
 
 #pulseaudio {
-    color: @color7;
+    color: @foreground;
 }
 
 #pulseaudio.muted {
@@ -208,7 +217,7 @@ tooltip {
 
 #network {
     padding: 0px 5px;
-    color: @color7;
+    color: @foreground;
 }
 
 #network.disconnected {

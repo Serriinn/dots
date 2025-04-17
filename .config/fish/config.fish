@@ -23,3 +23,7 @@ alias update="sudo dnf update"
 alias install="sudo dnf install"
 alias remove="sudo dnf remove"
 alias autoremove="sudo dnf autoremove"
+
+# Paths
+
+set PATH /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/serin/.local/bin
