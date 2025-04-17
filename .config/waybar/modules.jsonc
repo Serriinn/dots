@@ -15,38 +15,26 @@
 // By: Serin
 
 {
-  // Workspace Moduel
+  // Workspace Module
 
   "hyprland/workspaces": {
     "format": "{icon}",
-    "on-click": "activate",
     "format-icons": {
-      "1": "1",
-      "2": "2",
-      "3": "3",
-      "4": "4",
-      "5": "5",
-      "urgent": "",
-      "active": "",
+      "active": "",
       "default": "",
+      "empty": "",
     },
-    "sort-by-number": true,
     "persistent-workspaces": {
-      "1": [],
-      "2": [],
-      "3": [],
-      "4": [],
+      "*": [1, 2, 3, 4, 5],
     },
   },
 
-  // Arrow Icon Moduel
+  // Application Title
 
-  "custom/arrow-dec": {
-    "format": " 󪥜 ",
+  "custom/arrow-icon": {
+    "format": "󪤖",
     "tooltip": false,
   },
-
-  // Application Title Moduels
 
   "group/app-title": {
     "orientation": "horizontal",
@@ -72,46 +60,84 @@
   // Clock
 
   "clock": {
-    "format": "󪥶 <b>{:%I:%M %p}</b>",
-    "format-alt": "󪥶 <b>{:%a.%d,%b}</b>",
+    "format": "<b>{:%I:%M %p}</b>",
+    "format-alt": "<b>{:%a.%d,%b}</b>",
     "tooltip": false,
   },
 
-  //Network Moduel
+  //Network
 
   "network": {
-    "format-wifi": "󪤀 <b>{essid}</b>",
+    "format-wifi": "󪤀",
     "format-ethernet": "󪥈 <b>Ethernet</b>",
-    "tooltip": true,
+    "tooltip-format": "󪤀 <b>{essid}</b>",
     "format-disconnected": "󪤓",
   },
 
-  // Audio Moduel
+  // Expanding Tray
+
+  "group/expand": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "transition-to-left": true,
+      "click-to-reveal": true,
+    },
+    "modules": ["custom/expand", "tray", "bluetooth", "custom/endpoint"],
+  },
+
+  // Expanding Tray Icon
+
+  "custom/expand": {
+    "format": "󪤗",
+    "tooltip": false,
+  },
+
+  // Tray
+
+  "tray": {
+    "icon-size": 14,
+    "spacing": 10,
+  },
+
+  // Bluetooth
+
+  "bluetooth": {
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂯",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+    "on-click": "blueman-manager",
+  },
+
+  // Expanding Tray Endpoint Icon
+
+  "custom/endpoint": {
+    "format": "|",
+    "tooltip": false,
+  },
+
+  // Audio
 
   "pulseaudio": {
     "format": "{icon}",
-    "format-bluetooth": "{icon}",
-    "format-bluetooth-muted": "{icon}",
     "tooltip": true,
     "format-muted": "󪤑",
     "format-icons": {
-      "headphone": "󪥆",
-      "headset": "󪥆",
       "default": ["󪤦", "󪤦", "󪤒"],
     },
     "on-click": "pavucontrol",
   },
 
-  // Tray Moduel
-
-  "tray": {
-    "spacing": 8,
-  },
-
-  // Power Moduel
+  // Power
 
   "custom/power": {
     "format": "",
     "on-click": "wlogout",
+    "tooltip": false,
   },
 }

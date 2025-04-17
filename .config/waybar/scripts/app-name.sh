@@ -11,6 +11,7 @@ declare -A PKGS=(
     ["org.mozilla.firefox"]="Firefox"
     ["discord"]="Discord"
     ["xwaylandvideobridge"]="Hypr"
+    ["com.stremio.stremio"]="Stremio"
 )
 
 # Define the mapping between app names and symbols
@@ -24,7 +25,9 @@ declare -A SYMBOLS=(
     ["org.mozilla.firefox"]="󪥲"
     ["Firefox"]="󪥲"
     ["Spotify"]="󪥵"
+    ["discord"]=" "
     ["xwaylandvideobridge"]="󪥈"
+    ["com.stremio.stremio"]="󪤾"
 )
 
 app_name=$(hyprctl activewindow | grep -oP 'class: \K[^\s]+')
