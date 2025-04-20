@@ -26,4 +26,4 @@ alias autoremove="sudo dnf autoremove"
 
 # Paths
 
-set PATH /usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/home/serin/.local/bin
+fish_add_path /usr/local/bin
