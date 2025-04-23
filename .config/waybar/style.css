@@ -13,7 +13,7 @@
  *  \_____\___/|_| |_|_| |_|\__, |
  *                           __/ |
  *                          |___/
- * By Serin */
+ * By: Serin */
 
 /* Colors */
 
@@ -26,7 +26,7 @@
 @define-color pastel-chrome-yellow #ffec8b;
 @define-color pastel-telegram-blue #66a2ff;
 @define-color pastel-chrome-blue #a6c0fe;
-@define-color pastel-gitkraken-purple #A080E3;
+@define-color pastel-gitkraken-purple #a080e3;
 
 /* Font */
 
@@ -38,17 +38,13 @@
 /* Background Bar Settings */
 
 window#waybar {
-    background-color: transparent;
-}
-
-window#waybar.hidden {
-    opacity: 0.2;
+    all: unset;
 }
 
 /* Tool Tip settings */
 
 tooltip {
-    background-color: #313333;
+    background: @background;
     color: @foreground;
     text-shadow: none;
     border-radius: 10px;
@@ -64,22 +60,25 @@ tooltip * {
 .modules-left {
     padding: 5px 10px 5px 10px;
     margin: 10px 0px 5px 10px;
-    background-color: #313333;
     border-radius: 10px;
     padding-right: 10px;
+    background: alpha(@background, 0.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
 }
 
 .modules-center {
     padding: 5px 10px 5px 10px;
     margin: 10px 0px 5px 0px;
-    background-color: #313333;
+    background: alpha(@background, 0.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 }
 
 .modules-right {
     padding: 5px 10px 5px 10px;
     margin: 10px 10px 5px 10px;
-    background-color: #313333;
+    background: alpha(@background, 0.6);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
     border-radius: 10px;
 }
 
@@ -89,7 +88,8 @@ tooltip * {
 #network:hover,
 #custom-power:hover,
 #pulseaudio:hover,
-#bluetooth:hover
+#bluetooth:hover,
+#custom-notification:hover
 
 /* Module Settings */ {
     transition: all 0.3s ease;
@@ -136,10 +136,11 @@ tooltip * {
 
 #custom-arrow-icon {
     color: @color13;
-    padding: 0px 5px;
+    padding: 0px 2px;
 }
 
 #custom-app-title-icon {
+    padding: 0px 2px;
     color: @foreground;
 }
 
@@ -174,12 +175,13 @@ tooltip * {
 /* Expanding Tray  */
 
 #group-expand {
-    padding: 0px 5px;
+    padding: 0px 2px;
+    padding-left: 5px;
     transition: all 0.3s ease;
 }
 
 #custom-expand {
-    padding: 0px 5px;
+    padding: 0px 2px;
     color: @foreground;
     transition: all 0.3s ease;
 }
@@ -194,19 +196,20 @@ tooltip * {
 }
 
 #bluetooth {
-    padding: 0px 5px;
+    padding: 0px 2px;
     transition: all 0.3s ease;
     color: @foreground;
 }
 
 #custom-endpoint {
-    padding: 0px 5px;
+    padding: 0px 2px;
     color: @foreground;
 }
 
 /* Audio Module */
 
 #pulseaudio {
+    padding: 0px 2px;
     color: @foreground;
 }
 
@@ -216,16 +219,24 @@ tooltip * {
 /* Network Module */
 
 #network {
-    padding: 0px 5px;
+    padding: 0px 2px;
     color: @foreground;
 }
 
 #network.disconnected {
 }
 
+/* Notification Module */
+
+#custom-notification {
+    padding: 0px 2px;
+    color: @foreground;
+}
+
 /* Power Button Module */
 
 #custom-power {
+    padding: 0px 2px;
     padding-right: 5px;
     color: #ff746c;
 }

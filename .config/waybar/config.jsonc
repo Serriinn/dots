@@ -40,5 +40,11 @@
 
   "modules-center": ["clock"],
 
-  "modules-right": ["group/expand", "pulseaudio", "network", "custom/power"],
+  "modules-right": [
+    "group/expand",
+    "custom/notification",
+    "pulseaudio",
+    "network",
+    "custom/power",
+  ],
 }

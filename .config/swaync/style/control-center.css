@@ -1,0 +1,315 @@
+/*   _____            _             _    _____           _               _____ _         _
+ *  / ____|          | |           | |  / ____|         | |             / ____| |       | |
+ * | |     ___  _ __ | |_ _ __ ___ | | | |     ___ _ __ | |_ ___ _ __  | (___ | |_ _   _| | ___
+ * | |    / _ \| '_ \| __| '__/ _ \| | | |    / _ \ '_ \| __/ _ \ '__|  \___ \| __| | | | |/ _ \
+ * | |___| (_) | | | | |_| | | (_) | | | |___|  __/ | | | ||  __/ |     ____) | |_| |_| | |  __/
+ *  \_____\___/|_| |_|\__|_|  \___/|_|  \_____\___|_| |_|\__\___|_|    |_____/ \__|\__, |_|\___|
+ *  / ____|           / _(_)                                                        __/ |
+ * | |     ___  _ __ | |_ _  __ _                                                  |___/
+ * | |    / _ \| '_ \|  _| |/ _` |
+ * | |___| (_) | | | | | | | (_| |
+ *  \_____\___/|_| |_|_| |_|\__, |
+ *                           __/ |
+ *                          |___/
+ * By: Serin */
+
+/* Colors */
+
+@define-color text            @foreground;
+@define-color background-alt  alpha(@color1, .4);
+@define-color selected        @color6;
+@define-color hover           alpha(@selected, .4);
+@define-color urgent          @color2;
+@define-color mpris-album-art-overlay alpha(@background, 0.55);
+@define-color mpris-button-hover alpha(@background, 0.50);
+@define-color bg alpha(@background,.5);
+@define-color bg-hover alpha(@background,.8);
+@define-color mycolor @color9;
+@define-color border-color alpha(@mycolor, 0.15);
+
+* {
+    color: @text;
+
+    all: unset;
+    font-size: 15px;
+    font-family: "JetBrains Mono Nerd Font 10";
+    transition: 200ms;
+}
+
+/* Avoid 'annoying' backgroud */
+
+.blank-window {
+    background: transparent;
+}
+
+/* Control Cener */
+
+.control-center {
+    background: alpha(@background, 0.6);
+    color: @text;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+    margin: 18px;
+    padding: 12px;
+}
+
+/* Notifications */
+
+.control-center .notification-row .notification-background,
+.control-center
+    .notification-row
+    .notification-background
+    .notification.critical {
+    background-color: @background-alt;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 15px;
+    margin: 4px 10px;
+    padding: 0px;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification.critical {
+    color: @urgent;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification
+    .notification-content {
+    margin: 6px;
+    padding: 2px 2px 2px 2px;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification
+    > *:last-child
+    > * {
+    min-height: 3.4em;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification
+    > *:last-child
+    > *
+    .notification-action {
+    background: alpha(@selected, 0.6);
+    color: @text;
+    border-radius: 12px;
+    margin: 6px;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification
+    > *:last-child
+    > *
+    .notification-action:hover {
+    background: @selected;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .notification
+    > *:last-child
+    > *
+    .notification-action:active {
+    background-color: @selected;
+}
+
+/* Buttons */
+
+.control-center .notification-row .notification-background .close-button {
+    background: transparent;
+    border-radius: 6px;
+    color: @text;
+    margin: 0px;
+    padding: 4px;
+}
+
+.control-center .notification-row .notification-background .close-button:hover {
+    background-color: @selected;
+}
+
+.control-center
+    .notification-row
+    .notification-background
+    .close-button:active {
+    background-color: @selected;
+}
+
+/* Notifications expanded-group */
+
+.notification-group {
+    margin: 2px 8px 2px 8px;
+    transition: background 0.15s ease-in-out;
+}
+.notification-group-headers {
+    font-weight: bold;
+    font-size: 1.25rem;
+    color: @text;
+    letter-spacing: 2px;
+    transition: background 0.15s ease-in-out;
+}
+
+.notification-group-icon {
+    color: @text;
+}
+
+.notification-group-collapse-button,
+.notification-group-close-all-button {
+    background: transparent;
+    color: @text;
+    margin: 4px;
+    border-radius: 6px;
+    padding: 4px;
+    transition: background 0.15s ease-in-out;
+}
+
+.notification-group-collapse-button:hover,
+.notification-group-close-all-button:hover {
+    background: @hover;
+}
+
+progressbar,
+progress,
+trough {
+    border-radius: 6px;
+}
+
+/* Widgets */
+
+/* Notification clear button */
+.widget-title {
+    padding: unset;
+    margin: unset;
+    color: @text;
+    padding-left: 20px;
+}
+
+.widget-title button {
+    padding: unset;
+    margin: unset;
+    font-size: initial;
+    color: @text;
+    text-shadow: none;
+    background: @background-alt;
+    border: none;
+    box-shadow: none;
+    border-radius: 6px;
+    padding: 0px 10px;
+    margin-right: 20px;
+    margin-top: 3px;
+    transition: all 0.7s ease;
+}
+
+.widget-title button:hover {
+    background-color: @hover;
+}
+
+.widget-title button:active {
+    background-color: @selected;
+}
+
+/* Do not disturb */
+
+.widget-dnd {
+    padding: unset;
+    margin: unset;
+    color: @text;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.widget-dnd > switch {
+    background: @background-alt;
+    padding: unset;
+    margin: unset;
+    font-size: initial;
+    border-radius: 6px;
+    box-shadow: none;
+}
+
+.widget-dnd > switch:hover {
+    background: @hover;
+}
+
+.widget-dnd > switch:checked {
+    background: @selected;
+}
+
+.widget-dnd > switch:checked:hover {
+    background: @hover;
+}
+
+.widget-dnd > switch slider {
+    background: @text;
+    border-radius: 6px;
+}
+
+/* Music player */
+
+.widget-mpris .widget-mpris-player {
+    padding: 16px;
+    margin: 16px 20px;
+    background-color: @mpris-album-art-overlay;
+    border-radius: 12px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.65);
+}
+
+.widget-mpris .widget-mpris-player button:hover {
+    all: unset;
+    background: @bg-hover;
+    text-shadow: none;
+    border-radius: 15px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    transition: all 0.5s ease;
+}
+
+.widget-mpris .widget-mpris-player button {
+    color: @text;
+    text-shadow: none;
+    border-radius: 15px;
+    border: none;
+    padding: 5px;
+    margin: 5px;
+    transition: all 0.5s ease;
+}
+
+.widget-mpris .widget-mpris-player button:not(.selected) {
+    background: transparent;
+    border: 2px solid transparent;
+}
+.widget-mpris .widget-mpris-player button:hover {
+    border: 2px solid transparent;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-album-art {
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.75);
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-title {
+    font-weight: bold;
+    font-size: 1.25rem;
+}
+
+.widget-mpris .widget-mpris-player .widget-mpris-subtitle {
+    font-size: 1.1rem;
+}
+
+.widget-mpris .widget-mpris-player > box > button:hover {
+    background-color: @mpris-button-hover;
+}

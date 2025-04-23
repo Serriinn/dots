@@ -100,8 +100,6 @@
     "spacing": 10,
   },
 
-  // Bluetooth
-
   "bluetooth": {
     "format-on": "󰂯",
     "format-off": "󰂲",
@@ -131,6 +129,15 @@
       "default": ["󪤦", "󪤦", "󪤒"],
     },
     "on-click": "pavucontrol",
+  },
+
+  // Notification
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "󪤸",
+    "on-click": "swaync-client -t -sw",
+    "escape": true,
   },
 
   // Power
