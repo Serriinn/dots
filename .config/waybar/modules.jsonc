@@ -72,6 +72,7 @@
     "format-ethernet": "󪥈 <b>Ethernet</b>",
     "tooltip-format": "󪤀 <b>{essid}</b>",
     "format-disconnected": "󪤓",
+    "on-click": "nm-connection-editor",
   },
 
   // Expanding Tray
@@ -144,7 +145,7 @@
 
   "custom/power": {
     "format": "",
-    "on-click": "wlogout",
+    "on-click": "exec wlogout -b 4 -m 360px",
     "tooltip": false,
   },
 }
