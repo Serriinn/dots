@@ -1,113 +1,31 @@
-#!/usr/bin/env bash
-## /* ---- 💫 https://github.com/JaKooLit 💫 ---- */  ##
-# This script for selecting wallpapers (SUPER W)
+#!/bin/bash
 
-# Wallpapers Path
-wallpaperDir="$HOME/Pictures/wallpapers"
-themesDir="$HOME/.config/rofi/themes"
+image_dir="$HOME/Pictures/Wallpapers"
+images=("$image_dir"/*)
 
-# Transition config
-FPS=60
-TYPE="any"
-DURATION=3
-BEZIER="0.4,0.2,0.4,1.0"
-SWWW_PARAMS="--transition-fps ${FPS} --transition-type ${TYPE} --transition-duration ${DURATION} --transition-bezier ${BEZIER}"
+image_list=""
+for img in "${images[@]}"; do
+    image_list+=$(basename "$img" | cut -d. -f1)"\x00icon\x1f${img}\n"
+done
 
-# Check if swaybg is running
-if pidof swaybg > /dev/null; then
-  pkill swaybg
-fi
+selected_image=$(printf '%b' "$image_list" | rofi -dmenu -theme ~/.config/rofi/themes/wallpaper-select.rasi -p "Select wallpaper")
 
-# Retrieve image files as a list
-PICS=($(find -L "${wallpaperDir}" -type f \( -iname \*.jpg -o -iname \*.jpeg -o -iname \*.png -o -iname \*.gif \) | sort ))
-
-# Use date variable to increase randomness
-randomNumber=$(( ($(date +%s) + RANDOM) + $$ ))
-randomPicture="${PICS[$(( randomNumber % ${#PICS[@]} ))]}"
-randomChoice="[${#PICS[@]}] Random"
-
-# Rofi command
-rofiCommand="rofi -show -dmenu -theme ${themesDir}/wallpaper-select.rasi"
-
-# Execute command according the wallpaper manager
-executeCommand() {
-
-  if command -v swww &>/dev/null; then
-    swww img "$1" ${SWWW_PARAMS}
-
-  elif command -v swaybg &>/dev/null; then
-    swaybg -i "$1" &
-  
-  else
-    echo "Neither swww nor swaybg are installed."
-    exit 1
-  fi
-
-  ln -sf "$1" "$HOME/.current_wallpaper"
-}
-
-# Show the images
-menu() {
-
-  printf "$randomChoice\n"
-
-  for i in "${!PICS[@]}"; do
-  
-    # If not *.gif, display
-    if [[ -z $(echo "${PICS[$i]}" | grep .gif$) ]]; then
-      printf "$(basename "${PICS[$i]}" | cut -d. -f1)\x00icon\x1f${PICS[$i]}\n"
-    else
-    # Displaying .gif to indicate animated images
-      printf "$(basename "${PICS[$i]}")\n"
+for img in "${images[@]}"; do
+    if [[ "$(basename "$img" | cut -d. -f1)" = "$selected_image" ]]; then
+        selected_image_path="$img"
+        break
     fi
-  done
-}
+done
 
-# If swww exists, start it
-if command -v swww &>/dev/null; then
-  swww query || swww init
-fi
+if [ -n "$selected_image_path" ]; then
+  ln -sf "$selected_image_path" $HOME/Pictures/Wallpapers/wallpaper.png
 
-# Execution
-main() {
-  choice=$(menu | ${rofiCommand})
-
-  # No choice case
-  if [[ -z $choice ]]; then
-    exit 0
-  fi
-
-  # Random choice case
-  if [ "$choice" = "$randomChoice" ]; then
-    executeCommand "${randomPicture}"
-    return 0
-  fi
-
-  # Find the selected file
-  for file in "${PICS[@]}"; do
-  # Getting the file
-    if [[ "$(basename "$file" | cut -d. -f1)" = "$choice" ]]; then
-      selectedFile="$file"
-      break
-    fi
-  done
-
-  # Check the file and execute
-  if [[ -n "$selectedFile" ]]; then
-    executeCommand "${selectedFile}"
-    return 0
+  if [ "$XDG_SESSION_TYPE" == "wayland" ]; then
+    . ~/.config/hypr/scripts/set_wallpaper.sh
   else
-    echo "Image not found."
-    exit 1
+    i3-msg restart
   fi
 
-}
-
-# Check if rofi is already running
-if pidof rofi > /dev/null; then
-  pkill rofi
-  exit 0
+  notify-send -a "Wallpaper selector" "Wallpaper changed" "$selected_image_path" -i $HOME/Pictures/Wallpapers/wallpaper.png
+  . ~/.config/hypr/scripts/apply_wal_theme.sh
 fi
-
-main
-

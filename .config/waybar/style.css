@@ -32,22 +32,31 @@
 
 * {
     font-family: JetBrainsMono Nerd Font;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 /* Background Bar Settings */
 
 window#waybar {
-    all: unset;
+    background-color: alpha(@background, 0.5);
+    border-radius: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+#waybar .horizontal {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 /* Tool Tip settings */
 
 tooltip {
-    background: @background;
+    background: alpha(@background, 0.6);
     color: @foreground;
     text-shadow: none;
     border-radius: 10px;
+    border-color: @color4;
 }
 
 tooltip * {
@@ -55,48 +64,38 @@ tooltip * {
     text-shadow: none;
 }
 
-/* Module Container Settings */
-
-.modules-left {
-    padding: 7;
-    margin: 10px 0px 5px 10px;
-    border-radius: 10px;
-    padding-right: 10px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-}
-
-.modules-center {
-    padding: 7;
-    margin: 10px 0px 5px 0px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-}
-
-.modules-right {
-    padding: 7;
-    margin: 10px 10px 5px 10px;
-    background: alpha(@background, 0.6);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-}
-
-/* Modules */
+/* Modules Hover Settings */
 
 #clock:hover,
 #network:hover,
 #custom-power:hover,
 #pulseaudio:hover,
 #bluetooth:hover,
-#custom-notification:hover
-
-/* Module Settings */ {
+#custom-notification:hover,
+#custom-expand:hover {
     transition: all 0.3s ease;
     color: @color8;
 }
 
+/* Notification Module */
+
+#custom-notification {
+    margin-right: 7px;
+    padding: 0 7px;
+    padding-right: 10px;
+    color: @foreground;
+}
+
 /* Workspace Module */
+
+box#workspaces {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: alpha(@color7, 0.1);
+    border-radius: 10px;
+}
 
 #workspaces button {
     all: unset;
@@ -104,28 +103,33 @@ tooltip * {
     color: alpha(@color9, 0.4);
     transition: all 0.2s ease;
 }
+
 #workspaces button:hover {
     color: rgba(0, 0, 0, 0);
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
     transition: all 1s ease;
 }
+
 #workspaces button.active {
     color: @color9;
     border: none;
     text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
 }
+
 #workspaces button.empty {
     color: rgba(0, 0, 0, 0);
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
 }
+
 #workspaces button.empty:hover {
     color: rgba(0, 0, 0, 0);
     border: none;
     text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
     transition: all 1s ease;
 }
+
 #workspaces button.empty.active {
     color: @color9;
     border: none;
@@ -134,13 +138,23 @@ tooltip * {
 
 /* App Title Settings */
 
-#custom-arrow-icon {
-    color: @color13;
-    padding: 0px 2px;
+box#app-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: alpha(@color7, 0.1);
+    border-radius: 10px;
+}
+
+/* Title Arrow */
+
+#custom-arrow {
+    margin-right: 2px;
+    margin-left: 2px;
+    font-size: 15px;
+    color: @color4;
 }
 
 #custom-app-title-icon {
-    padding: 0px 2px;
     color: @foreground;
 }
 
@@ -161,82 +175,88 @@ tooltip * {
 }
 
 #custom-app-name {
-    padding-right: 5px;
     color: @foreground;
+}
+#app-title {
+    padding: 0px;
 }
 
 /* Clock Module */
 
 #clock {
-    padding: 0px 5px;
+    padding: 0 7px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: alpha(@color7, 0.1);
     color: @foreground;
+    border-radius: 10px;
 }
 
 /* Expanding Tray  */
 
 #group-expand {
-    padding: 0px 2px;
-    padding-left: 5px;
     transition: all 0.3s ease;
 }
 
 #custom-expand {
-    padding: 0px 2px;
-    color: @foreground;
+    margin-right: 2px;
+    margin-left: 2px;
+    font-size: 15px;
+    color: @color4;
     transition: all 0.3s ease;
-}
-
-#custom-expand:hover {
-    color: @color8;
 }
 
 #tray {
-    padding: 0px 5px;
+    color: @foreground;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: alpha(@color7, 0.1);
+    border-radius: 10px;
     transition: all 0.3s ease;
 }
 
-#bluetooth {
-    padding: 0px 2px;
-    transition: all 0.3s ease;
-    color: @foreground;
+/* System Container Module */
+
+box#system-container {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: alpha(@color7, 0.1);
+    border-radius: 10px;
 }
 
-#custom-endpoint {
-    padding: 0px 2px;
-    color: @foreground;
+#pulseaudio,
+#bluetooth,
+#network {
+    margin-left: 2px;
+    margin-right: 2px;
 }
 
 /* Audio Module */
 
 #pulseaudio {
-    padding: 0px 2px;
+    padding: 0 7px;
     color: @foreground;
 }
 
-#pulseaudio.muted {
+#bluetooth {
+    padding: 0 7px;
+    color: @foreground;
 }
 
 /* Network Module */
 
 #network {
-    padding: 0px 2px;
-    color: @foreground;
-}
-
-#network.disconnected {
-}
-
-/* Notification Module */
-
-#custom-notification {
-    padding: 0px 2px;
+    padding: 0 7px;
     color: @foreground;
 }
 
 /* Power Button Module */
 
 #custom-power {
-    padding: 0px 2px;
-    padding-right: 5px;
+    margin-left: 2px;
+    padding: 0 7px;
+    padding-left: 10px;
     color: #ff746c;
 }

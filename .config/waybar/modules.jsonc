@@ -19,9 +19,11 @@
 
   "hyprland/workspaces": {
     "format": "{icon}",
+    "on-click": "activate",
+    "all-outputs": true,
     "format-icons": {
-      "active": "",
       "default": "",
+      "active": "",
       "empty": "",
     },
     "persistent-workspaces": {
@@ -31,14 +33,14 @@
 
   // Application Title
 
-  "custom/arrow-icon": {
-    "format": "󪤖",
-    "tooltip": false,
-  },
-
   "group/app-title": {
     "orientation": "horizontal",
     "modules": ["custom/app-title-icon", "custom/app-name"],
+  },
+
+  "custom/arrow": {
+    "format": " 󪥜 ",
+    "tooltip": false,
   },
 
   "custom/app-title-icon": {
@@ -57,22 +59,27 @@
     "return-type": "json",
   },
 
+  // Notification
+
+  "custom/notification": {
+    "tooltip": false,
+    "format": "󱇉",
+    "on-click": "swaync-client -t -sw",
+    "escape": true,
+  },
+
   // Clock
 
   "clock": {
     "format": "<b>{:%I:%M %p}</b>",
-    "format-alt": "<b>{:%a.%d,%b}</b>",
-    "tooltip": false,
-  },
-
-  //Network
-
-  "network": {
-    "format-wifi": "󪤀",
-    "format-ethernet": "󪥈 <b>Ethernet</b>",
-    "tooltip-format": "󪤀 <b>{essid}</b>",
-    "format-disconnected": "󪤓",
-    "on-click": "nm-connection-editor",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ffcc66'><b><u>{}</u></b></span>",
+      },
+    },
   },
 
   // Expanding Tray
@@ -84,13 +91,13 @@
       "transition-to-left": true,
       "click-to-reveal": true,
     },
-    "modules": ["custom/expand", "tray", "bluetooth", "custom/endpoint"],
+    "modules": ["custom/expand", "tray"],
   },
 
   // Expanding Tray Icon
 
   "custom/expand": {
-    "format": "󪤗",
+    "format": "󪥙",
     "tooltip": false,
   },
 
@@ -101,44 +108,45 @@
     "spacing": 10,
   },
 
-  "bluetooth": {
-    "format-on": "󰂯",
-    "format-off": "󰂲",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂯",
-    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
-    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
-    "tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
-    "on-click": "blueman-manager",
-  },
+  // System Container
 
-  // Expanding Tray Endpoint Icon
-
-  "custom/endpoint": {
-    "format": "|",
-    "tooltip": false,
+  "group/system-container": {
+    "orientation": "horizontal",
+    "modules": ["network", "bluetooth", "pulseaudio"],
   },
 
   // Audio
 
   "pulseaudio": {
-    "format": "{icon}",
-    "tooltip": true,
-    "format-muted": "󪤑",
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
     "format-icons": {
-      "default": ["󪤦", "󪤦", "󪤒"],
+      "default": ["", "", ""],
+      "tooltip": false,
     },
     "on-click": "pavucontrol",
   },
 
-  // Notification
+  // Bluetooth
 
-  "custom/notification": {
-    "tooltip": false,
-    "format": "󪤸",
-    "on-click": "swaync-client -t -sw",
-    "escape": true,
+  "bluetooth": {
+    "format": "󰂯 {status}",
+    "format-disabled": " Disabled",
+    "format-connected": " Connected",
+    "tooltip-format": "{device_alias}",
+    "tooltip-format-connected": " {device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "on-click": "blueman-manager",
+  },
+
+  //Network
+
+  "network": {
+    "format-wifi": "󰖩 {essid}",
+    "format-ethernet": "󰈀 Ethernet",
+    "tooltip-format": "󰖩 {essid}",
+    "format-disconnected": "󰖪",
+    "on-click": "nm-connection-editor",
   },
 
   // Power

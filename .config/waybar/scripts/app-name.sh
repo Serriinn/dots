@@ -25,7 +25,6 @@ declare -A SYMBOLS=(
     ["org.mozilla.firefox"]="󪥲"
     ["Firefox"]="󪥲"
     ["Spotify"]="󪥵"
-    ["discord"]=" "
     ["xwaylandvideobridge"]="󪥈"
     ["com.stremio.stremio"]="󪤾"
 )
