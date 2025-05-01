@@ -28,14 +28,14 @@
 }
 
 window {
-    background-color: alpha(@background, 0.6);
+    background-color: alpha(@background, 0.5);
 }
 
 /* Button Settings */
 
 button {
     color: @foreground;
-    background-color: alpha(@background, 0.6);
+    background-color: alpha(@color7, 0.1);
     outline-style: none;
     border: none;
     box-shadow: none;
@@ -47,7 +47,7 @@ button {
 button:focus,
 button:hover {
     background-size: 30%;
-    background-color: @color8;
+    background-color: @color4;
     color: @foreground;
 }
 
