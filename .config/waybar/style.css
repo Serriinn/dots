@@ -38,10 +38,8 @@
 /* Background Bar Settings */
 
 window#waybar {
-    background-color: alpha(@background, 0.5);
+    background-color: alpha(@background, 0.3);
     border-radius: 10px;
-    padding: 0;
-    margin: 0;
 }
 
 #waybar .horizontal {
@@ -56,7 +54,7 @@ tooltip {
     color: @foreground;
     text-shadow: none;
     border-radius: 10px;
-    border-color: @color4;
+    border-color: @color13;
 }
 
 tooltip * {

@@ -13,84 +13,172 @@
 //                          |___/
 // By: Serin
 
-@theme "/dev/null"
-
-* {
-	bg: #0c1114;
-	background-color: @bg;
-}
-
+@theme "~/.cache/wal/colors-rofi-dark.rasi"
 
 configuration {
 	show-icons: true;
-	icon-theme: "Tela grey";
+	icon-theme: "Tela";
 	location: 0;
 	font: "JetBrainsMono Nerd Font 12";
 	drun-display-format : "{icon} {name}";
 	display-drun: "Launch:";
 }
 
+* {
+    //font: "NDot57 Bold 11";
+    background: transparent;
+    background-alt: rgba(0,0,0,0.2);
+    foreground: white;
+    selected: @selected-urgent-background;
+    active: #909090;
+    urgent: #e0e722;
+    imageborder: #629475;
+}
+
 window {
-	width: 35%;
 	transparency: "real";
-	orientation: vertical;
-	border-color: #74adc0;
+	location: center;
+    anchor: center;
+    width: 1000px;
+    x-offset: 0px;
+    y-offset: 0px;
+
+    // properties for all widgets
+    enabled: true;
+    border-radius: 10px;
+    cursor: "default";
+    background-color: @background-alt;
+    border: 2px solid;
+    border-color: rgba(255,255,255,0.1);
 }
 
 mainbox {
-	children: [inputbar, listview];
+    enabled: true;
+    background-color: transparent;
+    orientation: vertical;
+	children: [imagebox, listview];
+	spacing: 24;
 }
 
-
-// Element
-
-element {
-	padding: 4 12;
-	text-color: #EFE7DD;
-}
-
-element selected {
-	background-color: #7A9B86;
-}
-
-element-text {
-	background-color: inherit;
-	text-color: inherit;
-}
-
-element-icon {
-	size: 16 px;
-	background-color: inherit;
-	padding: 0 6 0 0;
-	alignment: vertical;
-}
-
-listview {
-	columns: 1;
-	lines: 9;
-	padding: 8 0;
-	fixed-height: true;
-	fixed-columns: true;
-	fixed-lines: true;
-	border: 0 10 6 10;
-}
-
-// Input Bar
-
-entry {
-	text-color: #EFE7DD;
-	padding: 10 10 0 0;
-	margin: 0 -2 0 0;
+imagebox {
+    background-color: transparent;
+    background-image: url("~/.config/rofi/rofi green.png", height);
+    border-radius: 10px;
+    children: ["inputbar"];
+    border: 2px solid;
+    border-color: @imageborder;
 }
 
 inputbar {
-	background-image: url("~/.config/rofi/rofi green.png", width);
-	padding: 180 0 0;
-	margin: 0 0 0 0;
+    enabled: true;
+    border-radius: 10px;
+    background-color: transparent;
+	text-color: @foreground;
+    children: ["dummy", "entry", "dummy"];
+    padding: 125 0 0 0;
+    }
+
+dummy {
+  background-color: transparent;
 }
 
-prompt {
-	text-color: #7A9B86;
-	padding: 10 6 0 10;
-	margin: 0 -2 0 0;
+entry {
+    enabled: true;
+    expand: true;
+    cursor: text;
+    placeholder: "Search";
+    placeholder-color: #FFFFFF80;
+    border-radius: 10px;
+    background-color: #2e322d;
+    padding: 10px 20px 10px 20px;
+    border: 2px solid;
+    border-color: @imageborder;
+}
+
+
+listview {
+    spacing: 10;
+    enabled: true;
+    columns: 2;
+    lines: 9;
+    cycle: true;
+    dynamic: true;
+    scrollbar: false;
+    fixed-height: true;
+    fixed-columns: true;
+	background-color: transparent;
+    text-color: @foreground;
+    cursor: "default";
+}
+
+
+
+element {
+	enabled: true;
+    padding: 4px 12px;
+    border-radius: 10px;
+    background-color: transparent;
+    text-color: @foreground;
+    cursor: pointer;
+}
+
+element normal.normal {
+    background-color: inherit;
+    text-color: inherit;
+}
+
+element normal.urgent {
+    background-color: @urgent;
+    text-color: @foreground;
+}
+
+element normal.active {
+    background-color: @active;
+    text-color: @foreground;
+}
+
+element selected.urgent {
+    background-color: @urgent;
+    text-color: @foreground;
+}
+
+element selected.active {
+    background-color: @urgent;
+    text-color: @foreground;
+}
+
+element-icon {
+	size: 25 px;
+    background-color: transparent;
+    text-color: inherit;
+	alignment: vertical;
+	cursor: inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color: inherit;
+    cursor: inherit;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+message {
+    background-color: transparent;
+}
+
+textbox {
+    padding: 12px;
+    border-radius: 5px;
+    background-color: @background-alt;
+    text-color: @foreground;
+    vertical-align: 0.5;
+    horizontal-align: 0.0;
+}
+
+error-message {
+    padding: 15px;
+    border-radius: 0px;
+    background-color: @background;
+    text-color: @foreground;
 }
