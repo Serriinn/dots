@@ -75,7 +75,7 @@ inputbar {
     background-color: transparent;
 	text-color: @foreground;
     children: ["dummy", "entry", "dummy"];
-    padding: 125 0 0 0;
+    padding: 115 0 0 0;
     }
 
 dummy {
