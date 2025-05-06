@@ -153,7 +153,8 @@
 
   "custom/power": {
     "format": "",
-    "on-click": "exec wlogout -b 4 -m 360px",
+    "on-click": "bash ~/.config/rofi/powermenu.sh",
+    "on-click-right": "killall rofi",
     "tooltip": false,
   },
 }
