@@ -21,14 +21,7 @@
     "format": "{icon}",
     "on-click": "activate",
     "all-outputs": true,
-    "format-icons": {
-      "default": "",
-      "active": "",
-      "empty": "",
-    },
-    "persistent-workspaces": {
-      "*": [1, 2, 3, 4, 5],
-    },
+    "format-icons": {},
   },
 
   // Application Title
@@ -36,11 +29,6 @@
   "group/app-title": {
     "orientation": "horizontal",
     "modules": ["custom/app-title-icon", "custom/app-name"],
-  },
-
-  "custom/arrow": {
-    "format": " 󪥜 ",
-    "tooltip": false,
   },
 
   "custom/app-title-icon": {
@@ -59,19 +47,10 @@
     "return-type": "json",
   },
 
-  // Notification
-
-  "custom/notification": {
-    "tooltip": false,
-    "format": "󱇉",
-    "on-click": "swaync-client -t -sw",
-    "escape": true,
-  },
-
   // Clock
 
   "clock": {
-    "format": "<b>{:%I:%M %p}</b>",
+    "format": "{:%H:%M}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "format": {
@@ -82,79 +61,30 @@
     },
   },
 
-  // Expanding Tray
-
-  "group/expand": {
-    "orientation": "horizontal",
-    "drawer": {
-      "transition-duration": 600,
-      "transition-to-left": true,
-      "click-to-reveal": true,
-    },
-    "modules": ["custom/expand", "tray"],
-  },
-
-  // Expanding Tray Icon
-
-  "custom/expand": {
-    "format": "󪥙",
-    "tooltip": false,
-  },
-
   // Tray
 
   "tray": {
-    "icon-size": 14,
     "spacing": 10,
-  },
-
-  // System Container
-
-  "group/system-container": {
-    "orientation": "horizontal",
-    "modules": ["network", "bluetooth", "pulseaudio"],
   },
 
   // Audio
 
   "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": "󰝟",
+    "format": "{icon} <b>{volume}</b>",
+    "format-muted": "󰖁 <b>{volume}</b>",
     "format-icons": {
-      "default": ["", "", ""],
-      "tooltip": false,
+      "default": ["󰕿", "󰖀", "󰕾"],
+      "tooltip-format": "{volume}%",
     },
     "on-click": "pavucontrol",
-  },
-
-  // Bluetooth
-
-  "bluetooth": {
-    "format": "󰂯 {status}",
-    "format-disabled": " Disabled",
-    "format-connected": " Connected",
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "blueman-manager",
-  },
-
-  //Network
-
-  "network": {
-    "format-wifi": "󰖩 {essid}",
-    "format-ethernet": "󰈀 Ethernet",
-    "tooltip-format": "󰖩 {essid}",
-    "format-disconnected": "󰖪",
-    "on-click": "nm-connection-editor",
+    "on-click-right": "pamixer --toggle-mute",
   },
 
   // Power
 
   "custom/power": {
-    "format": "",
-    "on-click": "bash ~/.config/rofi/powermenu.sh",
-    "on-click-right": "killall rofi",
+    "format": "⏻",
+    "on-click": "wlogout -b 4 -m 360px",
     "tooltip": false,
   },
 }

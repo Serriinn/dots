@@ -5,6 +5,10 @@
 dir="$HOME/.config/rofi"
 theme='powermenu'
 
+# CMDs
+uptime="`uptime -p | sed -e 's/up //g'`"
+host=`hostname`
+
 # Options
 shutdown='  Shutdown'
 reboot='  Reboot'

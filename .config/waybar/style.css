@@ -22,44 +22,53 @@
 /* App Colors */
 
 @define-color pastel-firefox-orange #ffa07a;
-@define-color pastel-jetbrains-blue #87ceeb;
-@define-color pastel-chrome-yellow #ffec8b;
 @define-color pastel-telegram-blue #66a2ff;
-@define-color pastel-chrome-blue #a6c0fe;
-@define-color pastel-gitkraken-purple #a080e3;
 
 /* Font */
 
 * {
-    font-family: JetBrainsMono Nerd Font;
-    font-size: 15px;
+    font-family:
+        JetBrainsMono Nerd Font,
+        Iosevka Nerd Font;
+    font-size: 16px;
 }
 
 /* Background Bar Settings */
 
 window#waybar {
-    background-color: alpha(@background, 0.3);
-    border-radius: 10px;
-}
-
-#waybar .horizontal {
-    padding-left: 5px;
-    padding-right: 5px;
+    background-color: transparent;
 }
 
 /* Tool Tip settings */
 
 tooltip {
-    background: alpha(@background, 0.6);
+    background: alpha(@background, 0.8);
     color: @foreground;
     text-shadow: none;
-    border-radius: 10px;
+    border-radius: 8px;
     border-color: @color13;
 }
 
 tooltip * {
     color: @foreground;
     text-shadow: none;
+}
+
+#tray,
+#pulseaudio,
+#clock,
+#workspaces,
+#custom-power,
+#app-title,
+# {
+    background-color: alpha(@background, 0.8);
+    color: @foreground;
+    padding: 0px 10px;
+    border-radius: 8px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-top: 12px;
+    margin-bottom: 4px;
 }
 
 /* Modules Hover Settings */
@@ -71,88 +80,44 @@ tooltip * {
 #bluetooth:hover,
 #custom-notification:hover,
 #custom-expand:hover {
-    transition: all 0.3s ease;
+    transition: all 0.2s ease;
     color: @color8;
-}
-
-/* Notification Module */
-
-#custom-notification {
-    margin-right: 7px;
-    padding: 0 7px;
-    padding-right: 10px;
-    color: @foreground;
 }
 
 /* Workspace Module */
 
-box#workspaces {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: alpha(@color7, 0.1);
-    border-radius: 10px;
+#workspaces {
+    border: none;
+    font-weight: bold;
 }
 
 #workspaces button {
-    all: unset;
-    padding: 0px 5px;
-    color: alpha(@color9, 0.4);
+    color: @foreground;
     transition: all 0.2s ease;
 }
 
 #workspaces button:hover {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-    transition: all 1s ease;
+    border-color: transparent;
+    color: @color8;
+    transition: all 0.2s ease;
 }
 
 #workspaces button.active {
-    color: @color9;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+    color: @color10;
+    transition: all 0.2s ease;
 }
 
-#workspaces button.empty {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.2);
-}
-
-#workspaces button.empty:hover {
-    color: rgba(0, 0, 0, 0);
-    border: none;
-    text-shadow: 0px 0px 1.5px rgba(0, 0, 0, 0.5);
-    transition: all 1s ease;
-}
-
-#workspaces button.empty.active {
-    color: @color9;
-    border: none;
-    text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.5);
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 8px;
 }
 
 /* App Title Settings */
 
-box#app-title {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: alpha(@color7, 0.1);
-    border-radius: 10px;
-}
-
-/* Title Arrow */
-
-#custom-arrow {
-    margin-right: 2px;
-    margin-left: 2px;
-    font-size: 15px;
-    color: @color4;
-}
-
 #custom-app-title-icon {
+    color: @foreground;
+}
+
+#custom-app-name {
     color: @foreground;
 }
 
@@ -172,89 +137,27 @@ box#app-title {
     color: alpha(#a7c7e7, 0.75);
 }
 
-#custom-app-name {
-    color: @foreground;
+/* Audio Module */
+
+#pulseaudio {
+    border-radius: 8px;
 }
-#app-title {
-    padding: 0px;
+
+#pulseaudio.muted {
+    border-radius: 8px;
+    color: @color10;
 }
 
 /* Clock Module */
 
 #clock {
-    padding: 0 7px;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: alpha(@color7, 0.1);
-    color: @foreground;
-    border-radius: 10px;
-}
-
-/* Expanding Tray  */
-
-#group-expand {
-    transition: all 0.3s ease;
-}
-
-#custom-expand {
-    margin-right: 2px;
-    margin-left: 2px;
-    font-size: 15px;
-    color: @color4;
-    transition: all 0.3s ease;
-}
-
-#tray {
-    color: @foreground;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    padding-left: 5px;
-    padding-right: 5px;
-    background-color: alpha(@color7, 0.1);
-    border-radius: 10px;
-    transition: all 0.3s ease;
-}
-
-/* System Container Module */
-
-box#system-container {
-    margin-top: 5px;
-    margin-bottom: 5px;
-    background-color: alpha(@color7, 0.1);
-    border-radius: 10px;
-}
-
-#pulseaudio,
-#bluetooth,
-#network {
-    margin-left: 2px;
-    margin-right: 2px;
-}
-
-/* Audio Module */
-
-#pulseaudio {
-    padding: 0 7px;
-    color: @foreground;
-}
-
-#bluetooth {
-    padding: 0 7px;
-    color: @foreground;
-}
-
-/* Network Module */
-
-#network {
-    padding: 0 7px;
-    color: @foreground;
+    font-weight: bold;
 }
 
 /* Power Button Module */
 
 #custom-power {
-    margin-left: 2px;
-    padding: 0 7px;
-    padding-left: 10px;
-    color: #ff746c;
+    color: @color10;
+    margin-right: 8px;
+    padding-right: 13px;
 }

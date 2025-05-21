@@ -39,7 +39,6 @@ window {
 // Main Box
 
 mainbox {
-
     enabled: true;
     border-radius: 10px;
     background-color: transparent;
